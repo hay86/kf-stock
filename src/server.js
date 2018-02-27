@@ -28,6 +28,7 @@ const download = ((url, res) => {
 		try {
 			await page.goto(url);
 			await page.waitForFunction('document.querySelectorAll("#Main tr").length > 2', {timeout:10000});
+            await page.waitFor(1000);
 		}
 		catch (e) {
 			console.error(now(), e.message);
