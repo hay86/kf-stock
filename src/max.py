@@ -34,11 +34,12 @@ for start,end in dates:
     for i in range(3):
         try:
             s = Stock(symbol, start, end)
-            break
+            if len(s.values) > 0:
+                break
         except Exception, e:
             print arrow.now(), 'retry#%d'%i
             print e
-            time.sleep(10)
+        time.sleep(10)
     if len(s.values) == 0:
         print arrow.now(), 'no values'
     else:
