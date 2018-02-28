@@ -22,10 +22,13 @@ for m in range(1,month+1):
     end = '%04d%02d%02d'%(year,m,calendar.monthrange(year,m)[1])
     dates.append((start, end))
 
+dates.reverse()
+
 root = '/home/ubuntu/kf-stock/data/'+symbol
 if not os.path.isdir(root):
     os.mkdir(root)
 
+noval = 0
 for start,end in dates:
     out = '%s/%s.csv' % (root,start[:-2])
     if os.path.isfile(out):
@@ -42,6 +45,7 @@ for start,end in dates:
         time.sleep(10)
     if len(s.values) == 0:
         print arrow.now(), 'no values'
+        noval += 1
     else:
         print arrow.now(), 'write', symbol, '=>', out
         fout = open(out,'w')    
@@ -49,3 +53,6 @@ for start,end in dates:
             fout.write(','.join([str(x) for x in v]))
             fout.write("\n")
         fout.close()
+    if noval >= 3:
+        print arrow.now(), 'stopped'
+        break
