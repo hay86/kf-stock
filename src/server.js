@@ -36,8 +36,8 @@ const download = ((url, res) => {
 
 		const html = await page.evaluate('document.documentElement.outerHTML');
 
-		//page.close();
-		browser.close();
+		await page.close();
+		await browser.close();
 
 		res.write(JSON.stringify({ok:0,url:url,createAt:now('isoDateTime'),html:html}));
 		res.end();
