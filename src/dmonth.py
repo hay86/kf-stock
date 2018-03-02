@@ -28,7 +28,7 @@ for i in range(3):
     except Exception, e:
         print arrow.now(), 'retry#%d'%i
         print e
-    time.sleep(10)
+    time.sleep(3)
 if len(s.values) == 0:
     print arrow.now(), 'no values'
 else:
