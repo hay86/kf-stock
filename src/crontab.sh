@@ -1,6 +1,5 @@
-python dmonth.py AAPL
-python dmonth.py AMZN
+# custom stocks
 python dmonth.py BABA
-python dmonth.py BIDU
-python dmonth.py FB
-python dmonth.py GOOG
+
+# nasdaq 100 stocks
+cat nasdaq100.txt | cut -d '	' -f1 | xargs python dmonth.py 
