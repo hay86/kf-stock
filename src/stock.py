@@ -10,7 +10,7 @@ class Stock:
         self.symbol     = symbol
         self.now        = arrow.now()
         self.fromts     = arrow.get(fromdate,'YYYYMMDD').timestamp if fromdate else self.now.shift(months=-1).timestamp
-        self.tots       = arrow.get(todate,'YYYYMMDD').timestamp if todate else self.now.timestamp
+        self.tots       = (arrow.get(todate,'YYYYMMDD').timestamp + 24*3600) if todate else self.now.timestamp
         self.values     = []
         self.__load__()
 
