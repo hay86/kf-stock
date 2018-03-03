@@ -7,9 +7,9 @@
 #python max.py ALGN
 #python max.py ALXN
 #python max.py AMAT
-python max.py AMGN
+#python max.py AMGN
 #python max.py AMZN
-python max.py ASML
+#python max.py ASML
 python max.py ATVI
 python max.py AVGO
 #python max.py BIDU
