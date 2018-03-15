@@ -88,6 +88,7 @@ def print_metrics(assets, close, label):
     print '%20s' % 'Alpha', '=>', '%.4f' % m['alpha']
     print '%20s' % 'Beta', '=>', '%.4f' % m['beta']
     print '%20s' % 'Sharpe Ratio', '=>', '%.4f' % m['sharpe ratio']
+    print '%20s' % 'Sortino Ratio', '=>', '%.4f' % m['sortino ratio']
     print '%20s' % 'Volatility', '=>', '%.4f' % m['volatility']
     print '%20s' % 'Information Ratio', '=>', '%.4f' % m['information ratio']
     print '%20s' % 'Max Drawdown', '=>', '%.2f%%' % (100*m['max drawdown'])

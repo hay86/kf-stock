@@ -79,10 +79,12 @@ def metrics(assets, quotes):
         ret['max drawdown'] = max(ret['max drawdown'], 1-float(assets[i])/max_assets)
     ret['beta'] = cov(strategy, benchmark) / var(benchmark)
     ret['alpha'] = (ret['annual returns']-ret['safe returns']) - ret['beta']*(ret['benchmark returns']-ret['safe returns'])
-    ret['volatility'] = 250 * std(strategy)
+    ret['volatility'] = std(strategy)*(250**0.5)
     ret['sharpe ratio'] = (ret['annual returns']-ret['safe returns'])/ret['volatility']
     diff = [strategy[i]-benchmark[i] for i in range(len(strategy))]
-    ret['information ratio'] = mean(diff) / std(diff)
+    down_risk = (sum([x**2 for x in diff if x < 0])/(N-1))**0.5*250
+    ret['sortino ratio'] = (ret['annual returns']-ret['safe returns'])/down_risk
+    ret['information ratio'] = mean(diff)*(250**0.5) / std(diff)
     
     return ret
 
